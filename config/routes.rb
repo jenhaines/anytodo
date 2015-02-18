@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
-  resources :sessions
-  resources :users
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :lists
+  resources :users
+  resources :sessions
+  
+  resources :lists do
+    resources :items
+  end
+
+  namespace :api do
+    resources :lists, :items, :users
+  end
+
+  root to: 'sessions#new'
 
 end

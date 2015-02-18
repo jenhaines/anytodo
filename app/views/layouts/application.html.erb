@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Anytodo</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Anytodo</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class='container'>
+      <div class='navbar navbar-default'>
+        <p class='navbar-text'>
+          <% if current_user %>
+            Logged in as <%= current_user.email %>.
+            <%= link_to 'Log Out', logout_path %>
+          <% else %>
+            <%= link_to 'Sign Up', new_user_path %>
+            or
+            <%= link_to 'Log In', login_path %>
+          <% end %>
+        </p>
+      </div>
+      <% if flash[:notice] %>
+        <div class='alert alert-success'>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:notice] %>
+        </div>
+      <% elsif flash[:error] %>
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:error] %>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      <%= yield %>
 
-<%= yield %>
-
-</body>
+    </div>
+  </body>
 </html>
