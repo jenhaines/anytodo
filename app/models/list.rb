@@ -16,8 +16,8 @@ class List < ActiveRecord::Base
     List.where permissions: "open"
   end
 
-  def self.all_available
-    List.where.not permissions: "private"
+  def self.policy_scope
+    List.where.not permissions: "private" 
   end
 
   def self.permission_options
