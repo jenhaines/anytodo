@@ -2,6 +2,8 @@ class List < ActiveRecord::Base
   belongs_to :user
   has_many :items, dependent: :destroy
 
+  after_initialize :defaults
+
   def self.private
     List.where permissions: "private"
   end
@@ -36,6 +38,10 @@ class List < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def defaults
+    self.permissions ||= 'private'
   end
   
 end

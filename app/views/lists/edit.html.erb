@@ -1,6 +1,8 @@
-<h1>Editing List</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @list %> |
-<%= link_to 'Back', lists_path %>
+<div class='row'>
+  <div class='col-md-10'>
+    <h1>Editing List</h1>
+    <%= render 'form' %>
+    <%= link_to 'Show', @list, class: 'btn btn-default' %>
+    <%= link_to 'Back', lists_path, class: 'btn btn-default' %>
+  </div>
+</div>
