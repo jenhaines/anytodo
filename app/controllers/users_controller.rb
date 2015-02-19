@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to lists_path, notice: "Thank you for signing up!"
     else
-      render "new"
+      render "new", notice: "Errors prohibited this user from being saved:"
     end
   end
 
