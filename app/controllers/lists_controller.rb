@@ -6,7 +6,7 @@ class ListsController < ApplicationController
   def index
     @user = current_user
     if params[:view]=='all'
-      @lists = List.all_available
+      @lists = List.all_available(@user) 
     else
       @lists = @user.lists
     end

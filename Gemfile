@@ -23,12 +23,6 @@ group :development, :test do
   gem 'better_errors'
 end
 
-group :test do
-  gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'rspec-rails'  
-end
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -48,6 +42,9 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'rspec-rails' 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

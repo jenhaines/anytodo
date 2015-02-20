@@ -1,6 +1,9 @@
 <div class='row'>
   <div class='col-md-10'>
     <h1><%= "ID. #{@user.id} - #{@user.username} lists" %></h1>
+    <%= link_to 'New List', new_list_path, class: 'btn btn-default navbar-btn' %>
+        <%= link_to 'All', lists_path(view: 'all'), class: 'btn btn-default navbar-btn' unless params[:view]=='all'%>
+        <%= link_to 'My Lists', lists_path, class: 'btn btn-default navbar-btn' if params.has_key?(:view) %>
 
     <table class='table'>
       <thead>
@@ -28,8 +31,7 @@
 
     <br>
 
-    <%= link_to 'New List', new_list_path, class: 'btn btn-default' %>
-    <%= link_to 'All', lists_path(view: 'all'), class: 'btn btn-default' %>
-    <%= link_to 'My Lists', lists_path, class: 'btn btn-default' %>
+
+    <br>
   </div>
 </div>
